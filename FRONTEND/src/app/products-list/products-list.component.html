@@ -1,0 +1,32 @@
+<app-search-engine 
+  (inStockChange)="onInStockChange($event)"
+  (maxPriceChange)="onMaxPriceChange($event)"
+  (minRatingChange)="onMinRatingChange($event)">
+</app-search-engine>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4" *ngFor="let product of filteredProducts">
+                <div class="card">
+                    <!-- Image du produit -->
+                    <!-- <img [src]="#" class="card-img-top" alt="{{ product.name }}"> -->
+
+                    <div class="card-body">
+                        <!-- Nom du produit -->
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <!-- Description ou prix -->
+                        <p class="card-text">{{ product.description }}</p>
+                        <p><strong>{{ product.price }}€</strong></p>
+                    </div>
+
+                    <div class="card-footer">
+                        <!-- Bouton Ajouter au panier -->
+                        <!-- <button class="btn btn-primary" (click)="addToCart(product)">Ajouter au panier</button> -->
+                        <button class="btn btn-primary">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,51 @@
+/* Appliquer flexbox sur la carte pour garantir une hauteur égale */
+.card {
+    display: flex;
+    flex-direction: column;
+    /* Empêche la déformation horizontale */
+    height: 100%;
+    /* Assure que la carte occupe toute la hauteur disponible */
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Forcer l'image à avoir une taille fixe */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    /* Garder l'image sans déformation */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Assurez-vous que le corps de la carte prend tout l'espace disponible */
+.card-body {
+    padding: 20px;
+    flex-grow: 1;
+    /* Permet au corps de la carte de s'étirer pour occuper l'espace restant */
+}
+
+/* Pour le pied de la carte (le bouton), s'assurer qu'il reste en bas */
+.card-footer {
+    text-align: center;
+    background-color: transparent;
+    border-top: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+/* Ajouter un espacement égal entre les cartes */
+.col-12.col-md-4 {
+    margin-bottom: 30px;
+}
+
+/* Disposition des cartes sur les écrans plus grands */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+body {
+    padding : 1rem;
+}

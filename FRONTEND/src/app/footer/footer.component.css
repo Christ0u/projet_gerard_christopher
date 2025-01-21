@@ -1,0 +1,14 @@
+footer {
+    background-color: #f8f9fa;
+    /* Fond clair assorti au header */
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    /* Ombre en haut */
+    padding: 1rem 0;
+    /* Espacement vertical */
+}
+
+footer p {
+    font-weight: bold;
+    color: #007bff;
+    /* Couleur assortie à la navbar-brand */
+}

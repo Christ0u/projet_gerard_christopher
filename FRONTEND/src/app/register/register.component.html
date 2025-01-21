@@ -1,0 +1,123 @@
+<body>
+    <div class="container w-80">
+        <form [formGroup]="registerForm" [hidden]="hideForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="civility">Civilité*</label>
+                <select class="form-control" id="civility" formControlName="civility">
+                    <option>👨 Monsieur</option>
+                    <option>👩 Madame</option>
+                    <option>🍕 Pizza</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="firstName">Prénom*</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Justin" formControlName="firstName">
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Nom*</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Ptipeu" formControlName="lastName">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" class="form-control" id="email" placeholder="example@example.com" formControlName="email">
+                <p class="alert alert-warning" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+                    L'email fourni n'a pas un format valide
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="login">Login*</label>
+                <input type="text" class="form-control" id="login" placeholder="prenom.nom" formControlName="login">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Adresse</label>
+                <input type="text" class="form-control" id="address" placeholder="35 rue de la Charmille" formControlName="address">
+            </div>
+
+            <div class="form-group">
+                <label for="zipCode">Code Postal</label>
+                <input type="number" class="form-control" id="zipCode" placeholder="67000" formControlName="zipCode">
+            </div>
+
+            <div class="form-group">
+                <label for="city">Ville</label>
+                <input type="text" class="form-control" id="city" placeholder="Strasbourg" formControlName="city">
+            </div>
+
+            <div class="form-group">
+                <label for="contry">Pays</label>
+                <select class="form-control" id="contry" formControlName="country">
+                        <option>🇺🇸 États-Unis</option>
+                        <option>🇬🇧 Royaume-Uni</option>
+                        <option>🇫🇷 France</option>
+                        <option>🇩🇪 Allemagne</option>
+                        <option>🇮🇹 Italie</option>
+                        <option>🇪🇸 Espagne</option>
+                        <option>🇷🇺 Russie</option>
+                        <option>🇨🇳 Chine</option>
+                        <option>🇯🇵 Japon</option>
+                        <option>🇧🇷 Brésil</option>
+                        <option>🇦🇺 Australie</option>
+                        <option>🇮🇳 Inde</option>
+                        <option>🇰🇷 Corée du Sud</option>
+                        <option>🇲🇽 Mexique</option>
+                        <option>🇸🇪 Suède</option>
+                        <option>🇳🇱 Pays-Bas</option>
+                        <option>🇧🇪 Belgique</option>
+                        <option>🇨🇦 Canada</option>
+                        <option>🇦🇷 Argentine</option>
+                        <option>🇿🇦 Afrique du Sud</option>
+                        <option>🇦🇪 Émirats Arabes Unis</option>
+                    </select>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Téléphone</label>
+                <input type="tel" class="form-control" id="phone" placeholder="01 23 45 67 89 / 0123456789 / +XXX123456789" formControlName="phone">
+                <p class="alert alert-warning" *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">
+                    Le numéro de téléphone fourni n'a pas un format valide
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe*</label>
+                <input type="password" class="form-control" id="password" placeholder="Mot de passe" formControlName="password">
+            </div>
+
+            <div class="form-group">
+                <label for="passwordValidation">Confirmation du mot de passe*</label>
+                <input type="password" class="form-control" id="passwordValidation" placeholder="Validation du mot de passe" formControlName="passwordValidation">
+                <p class="alert alert-warning" *ngIf="registerForm.hasError('mismatch') && registerForm.get('passwordValidation')?.touched">
+                    Les mots de passe ne correspondent pas
+                </p>
+                <p class="alert alert-warning" *ngIf="registerForm.get('password')?.errors?.['minlength'] && registerForm.get('password')?.touched">
+                    Le mot de passe doit avoir une longueur supérieure à 8 caractères
+                </p>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Submit</button>
+        </form>
+
+        <br>
+
+        <table class="table table-bordered" style="width: auto;" [hidden]="hideTable">
+            <div class="alert alert-success" role="alert">Formulaire validé</div>
+            <tbody>
+                <tr><th>Civilité</th><td>{{registerForm.value.civility}}</td></tr>
+                <tr><th>Prénom</th><td>{{registerForm.value.firstName}}</td></tr>
+                <tr><th>Nom</th><td>{{registerForm.value.lastName}}</td></tr>
+                <tr><th>Email</th><td>{{registerForm.value.email}}</td></tr>
+                <tr><th>Login</th><td>{{registerForm.value.login}}</td></tr>
+                <tr><th>Adresse</th><td>{{registerForm.value.address}}</td></tr>
+                <tr><th>Code postal</th><td>{{registerForm.value.zipCode}}</td></tr>
+                <tr><th>Ville</th><td>{{registerForm.value.city}}</td></tr>
+                <tr><th>Pays</th><td>{{registerForm.value.country}}</td></tr>
+                <tr><th>Téléphone</th><td>{{registerForm.value.phone}}</td></tr>
+            </tbody>
+        </table>
+    </div>
+</body>

@@ -1,23 +1,10 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-// import { AddProduit, RemoveProduit, UpdateQuantity } from './basket.actions.ts';
+import { AddProduct, RemoveProduct, UpdateQuantity } from './basket.actions';
 
-// Actions
-export class AddProduct {
-  static readonly type = '[Basket] Add Product';
-  constructor(public product: any) {}
-}
-
-export class RemoveProduct {
-  static readonly type = '[Basket] Remove Product';
-  constructor(public productId: number) {}
-}
-
-// State Model
 export interface BasketStateModel {
   products: any[];
 }
 
-// Initial State
 const defaultState: BasketStateModel = {
   products: []
 };
@@ -27,27 +14,43 @@ const defaultState: BasketStateModel = {
   defaults: defaultState
 })
 export class BasketState {
-
-  // Selector to get products from the basket state
+  @Selector()
   static getProducts(state: BasketStateModel): any[] {
     return state.products;
   }
 
-  // Action to add a product to the basket
+  @Selector()
+  static getTotalAmount(state: BasketStateModel): number {
+    return state.products.reduce((total, product) => total + product.price * product.quantity, 0);
+  }
+
   @Action(AddProduct)
-  addProduct({ getState, patchState }: StateContext<BasketStateModel>, { product }: AddProduct) {
-    const state = getState();
-    patchState({
-      products: [...state.products, product]
+  addProduct(ctx: StateContext<BasketStateModel>, { product }: AddProduct) {
+    const state = ctx.getState();
+    const existingProduct = state.products.find(p => p.id === product.id);
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      product.quantity = 1;
+      state.products.push(product);
+    }
+    ctx.patchState({ products: [...state.products] });
+  }
+
+  @Action(RemoveProduct)
+  removeProduct(ctx: StateContext<BasketStateModel>, { productId }: RemoveProduct) {
+    const state = ctx.getState();
+    ctx.patchState({
+      products: state.products.filter(product => product.id !== productId)
     });
   }
 
-  // Action to remove a product from the basket
-  @Action(RemoveProduct)
-  removeProduct({ getState, patchState }: StateContext<BasketStateModel>, { productId }: RemoveProduct) {
-    const state = getState();
-    patchState({
-      products: state.products.filter(product => product.id !== productId)
-    });
+  @Action(UpdateQuantity)
+  updateQuantity(ctx: StateContext<BasketStateModel>, { productId, quantity }: UpdateQuantity) {
+    const state = ctx.getState();
+    const products = state.products.map(product => 
+      product.id === productId ? { ...product, quantity } : product
+    );
+    ctx.patchState({ products });
   }
 }

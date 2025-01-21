@@ -1,32 +1,49 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { empty } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserAuthService } from '../services/user-auth.service'; 
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  disableSubmitButton: Boolean = true;
-  hideTable: Boolean = true;
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
+  errorMessage: string = '';
+  hideTable = false;
 
-  passwordIsValid: Boolean = false;
-  phoneIsValid: Boolean = true;
+  constructor(private fb: FormBuilder, private userAuthService: UserAuthService, private router: Router) {
+    this.loginForm = this.fb.group({
+      login: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
+  }
 
-  login: string = "";
+  ngOnInit(): void {}
 
-  password: string = "";
-
-  onSubmit() {
-    if (this.login == "" || this.password == "") {
-      alert("Tous les champs obligatoires (*) ne sont pas renseignés");
+  onSubmit(): void {
+    if (this.loginForm.invalid) {
+      return;
     }
-    else {
-      this.disableSubmitButton = !this.disableSubmitButton;
-      this.hideTable = !this.hideTable;
-    }
+
+    const loginData = this.loginForm.value;
+    this.userAuthService.login(loginData).subscribe(
+      (response: any) => {
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        this.errorMessage = 'Nom d\'utilisateur ou mot de passe incorrect.';
+        console.log(error);
+      }
+    );
+  }
+
+  get isFormValid(): boolean {
+    return this.loginForm.valid;
   }
 }

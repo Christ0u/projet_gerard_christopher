@@ -8,7 +8,8 @@ import { provideHttpClient } from '@angular/common/http';
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient()
+    // provideStore([BasketState])
   ]
 })
   .catch((err) => console.error(err));

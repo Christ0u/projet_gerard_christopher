@@ -9,7 +9,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 @Component({
     selector: 'app-root',
     imports: [HeaderComponent, FooterComponent, RouterOutlet],
-    templateUrl: './app.component.html',
+    templateUrl: './app.component.html', //tesr
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {

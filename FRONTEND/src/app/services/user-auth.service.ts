@@ -12,7 +12,7 @@ export class UserAuthService {
   private apiUrl = 'http://localhost:443/api/utilisateur'; 
   private currentUserSubject: BehaviorSubject<Users | null> = new BehaviorSubject<Users | null>(null);
   public currentUser: Observable<Users | null> = this.currentUserSubject.asObservable();
-  
+
   constructor(private http: HttpClient, private router: Router) {}
 
   register(user: Users): Observable<any> {
@@ -22,32 +22,35 @@ export class UserAuthService {
   login(loginData: { login: string, password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, loginData).pipe(
       tap((response: any) => {
-        if (response && response.user) {
-          this.setUserData(response.user);
-        }
+        this.setUserData(response.user);
       })
     );
   }
 
   logout(): void {
-    this.http.post(`${this.apiUrl}/logout`, {}).subscribe(() => {
-      this.currentUserSubject.next(null);
-      this.router.navigate(['/login']);
-    });
+    this.currentUserSubject.next(null);
+    this.router.navigate(['/login']);
   }
 
   private setUserData(user: Users): void {
     this.currentUserSubject.next(user);
+    localStorage.setItem('currentUser', JSON.stringify(user));
   }
 
+  // getUser(): Observable<Users> {
+  //   return this.http.get<Users>(`${this.apiUrl}/me`);
+  // }
+
+  // updateUser(user: Users): Observable<Users> {
+  //   return this.http.put<any>(`${this.apiUrl}/mee`, user).pipe(
+  //     map((response: any) => response as Users),
+  //     tap((updatedUser: Users) => {
+  //       this.setUserData(updatedUser);
+  //     })
+  //   );
+  // }
+
   isAuthenticated(): Observable<boolean> {
-    return this.http.get<any>(`${this.apiUrl}/me`).pipe(
-      tap(response => {
-        if (response && response.user) {
-          this.setUserData(response.user);
-        }
-      }),
-      map(response => response && response.user ? true : false)
-    );
+    return this.currentUser.pipe(map(user => !!user));
   }
 }

@@ -3,6 +3,7 @@ import { ProductsListComponent } from "./products-list/products-list.component";
 import { BasketComponent } from "./basket/basket.component";
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
+import { UserSummaryComponent } from "./user-summary/user-summary.component";
 
 export const routes: Routes = [
     {
@@ -19,6 +20,9 @@ export const routes: Routes = [
     },
     {
         path: "login", component : LoginComponent
+    },
+    {
+        path: "summary", component: UserSummaryComponent
     },
     {
         path: "**", redirectTo: "home"

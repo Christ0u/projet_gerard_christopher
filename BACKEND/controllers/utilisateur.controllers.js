@@ -34,8 +34,15 @@ exports.login = async (req, res) => {
     const user = {
       id: utilisateur.id,
       login: utilisateur.login,
-      nom: utilisateur.nom,
-      email: utilisateur.email
+      firstName: utilisateur.firstName,
+      lastName: utilisateur.lastName,
+      email: utilisateur.email,
+      address: utilisateur.address,
+      zipCode: utilisateur.zipCode,
+      city: utilisateur.city,
+      country: utilisateur.country,
+      phone: utilisateur.phone,
+      civility: utilisateur.civility
     };
 
     const accessToken = generateAccessToken(user);
@@ -93,4 +100,29 @@ exports.register = (req, res) => {
         });
       });
   });
+};
+
+exports.getUser = async (req, res) => {
+  try {
+    const utilisateur = await Utilisateurs.findByPk(req.token.id);
+    if (!utilisateur) {
+      return res.status(404).send({ message: 'Utilisateur non trouvé.' });
+    }
+    res.status(200).send(utilisateur);
+  } catch (error) {
+    res.status(500).send({ message: 'Erreur lors de la récupération des informations utilisateur.' });
+  }
+};
+
+exports.updateUser = async (req, res) => {
+  try {
+    const utilisateur = await Utilisateurs.findByPk(req.token.id);
+    if (!utilisateur) {
+      return res.status(404).send({ message: 'Utilisateur non trouvé.' });
+    }
+    await utilisateur.update(req.body);
+    res.status(200).send(utilisateur);
+  } catch (error) {
+    res.status(500).send({ message: 'Erreur lors de la mise à jour des informations utilisateur.' });
+  }
 };

@@ -1,0 +1,73 @@
+<div class="container mt-5 mb-5">
+    <div class="card shadow-lg">
+      <div class="card-header bg-primary text-white">
+        <h3 class="mb-0">Récapitulatif des informations utilisateur</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="userForm">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="civility" class="form-label">Civilité*</label>
+              <select class="form-select" id="civility" formControlName="civility">
+                <option>👨 Monsieur</option>
+                <option>👩 Madame</option>
+                <option>🍕 Pizza</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="firstName" class="form-label">Prénom*</label>
+              <input type="text" class="form-control" id="firstName" formControlName="firstName">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="lastName" class="form-label">Nom*</label>
+              <input type="text" class="form-control" id="lastName" formControlName="lastName">
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email*</label>
+              <input type="email" class="form-control" id="email" formControlName="email">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="login" class="form-label">Login*</label>
+              <input type="text" class="form-control" id="login" formControlName="login">
+            </div>
+            <div class="col-md-6">
+              <label for="address" class="form-label">Adresse</label>
+              <input type="text" class="form-control" id="address" formControlName="address">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="zipCode" class="form-label">Code Postal</label>
+              <input type="number" class="form-control" id="zipCode" formControlName="zipCode">
+            </div>
+            <div class="col-md-6">
+              <label for="city" class="form-label">Ville</label>
+              <input type="text" class="form-control" id="city" formControlName="city">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="country" class="form-label">Pays</label>
+              <select class="form-select" id="country" formControlName="country">
+                <option>🇺🇸 États-Unis</option>
+                <option>🇬🇧 Royaume-Uni</option>
+                <option>🇫🇷 France</option>
+                <!-- Ajoutez d'autres options de pays ici -->
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Téléphone</label>
+              <input type="tel" class="form-control" id="phone" formControlName="phone">
+            </div>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="userForm.invalid">Mettre à jour</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

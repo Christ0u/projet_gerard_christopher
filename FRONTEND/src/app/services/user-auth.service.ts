@@ -12,6 +12,8 @@ export class UserAuthService {
   private apiUrl = 'http://localhost:443/api/utilisateur'; 
   private currentUserSubject: BehaviorSubject<Users | null> = new BehaviorSubject<Users | null>(null);
   public currentUser: Observable<Users | null> = this.currentUserSubject.asObservable();
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -29,26 +31,16 @@ export class UserAuthService {
 
   logout(): void {
     this.currentUserSubject.next(null);
+    this.isAuthenticatedSubject.next(false);
+    localStorage.removeItem('currentUser'); // Supprimez les données utilisateur du localStorage
+    localStorage.removeItem('token');
     this.router.navigate(['/login']);
-  }
+}
 
   private setUserData(user: Users): void {
     this.currentUserSubject.next(user);
     localStorage.setItem('currentUser', JSON.stringify(user));
   }
-
-  // getUser(): Observable<Users> {
-  //   return this.http.get<Users>(`${this.apiUrl}/me`);
-  // }
-
-  // updateUser(user: Users): Observable<Users> {
-  //   return this.http.put<any>(`${this.apiUrl}/mee`, user).pipe(
-  //     map((response: any) => response as Users),
-  //     tap((updatedUser: Users) => {
-  //       this.setUserData(updatedUser);
-  //     })
-  //   );
-  // }
 
   isAuthenticated(): Observable<boolean> {
     return this.currentUser.pipe(map(user => !!user));

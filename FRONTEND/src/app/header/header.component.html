@@ -18,18 +18,22 @@
                 </li>
             </ul>
 
-            <div *ngIf="!connected" class="register-container">
+            <div *ngIf="connected" class="register-container">
                 <a href="register" class="btn btn-outline-primary me-2" routerLink="register">S'inscrire</a>
             </div>
 
-            <div *ngIf="!connected" class="login-container">
+            <div *ngIf="connected" class="login-container">
                 <a href="login" class="btn btn-primary" routerLink="login">Se connecter</a>
+            </div>
+            
+            <div *ngIf="!connected" class="logout-container">
+                <button class="btn btn-danger" (click)="logout()">Se déconnecter</button>
             </div>
             
             <div class="cart-container ms-3">
                 <a href="basket" class="nav-link cart-link" routerLink="basket">
                     <img src="../../assets/basket.png" alt="Panier" class="cart-icon">
-                    <span class="cart-count">{{ totalItems$ | async }}</span> <!-- Nombre de produits -->
+                    <span class="cart-count">{{ totalItems$ | async }}</span>
                 </a>
             </div>
         </div>

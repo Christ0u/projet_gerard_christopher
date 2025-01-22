@@ -10,10 +10,10 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#" routerLink="home">Accueil</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="connected">
                     <a class="nav-link" routerLink="basket">Panier</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="connected">
                     <a class="nav-link" routerLink="summary">Profil</a>
                 </li>
             </ul>
@@ -30,7 +30,7 @@
                 <button class="btn btn-danger" (click)="logout()">Se déconnecter</button>
             </div>
             
-            <div class="cart-container ms-3">
+            <div *ngIf="connected" class="cart-container ms-3">
                 <a href="basket" class="nav-link cart-link" routerLink="basket">
                     <img src="../../assets/basket.png" alt="Panier" class="cart-icon">
                     <span class="cart-count">{{ totalItems$ | async }}</span>

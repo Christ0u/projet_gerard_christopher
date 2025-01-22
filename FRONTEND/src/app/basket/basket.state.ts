@@ -1,5 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { AddProduct, RemoveProduct, UpdateQuantity } from './basket.actions';
+import { Injectable } from '@angular/core';
 
 export interface BasketStateModel {
   products: any[];
@@ -13,6 +14,8 @@ const defaultState: BasketStateModel = {
   name: 'basket',
   defaults: defaultState
 })
+
+@Injectable()
 export class BasketState {
   @Selector()
   static getProducts(state: BasketStateModel): any[] {

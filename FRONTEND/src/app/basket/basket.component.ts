@@ -5,11 +5,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BasketState } from './basket.state';
 import { RemoveProduct, UpdateQuantity } from './basket.actions';
-import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-basket',
-    imports: [],
+    imports: [CommonModule],
     templateUrl: './basket.component.html',
     styleUrls: ['./basket.component.css'],
 })

@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-//import { RouterLink } from '@angular/router'
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { BasketState } from './basket.state';
+import { RemoveProduct, UpdateQuantity } from './basket.actions';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-basket',
@@ -8,5 +14,18 @@ import { Component } from '@angular/core';
     styleUrls: ['./basket.component.css'],
 })
 export class BasketComponent {
+    @Select(BasketState.getProducts) products$!: Observable<any[]>;
+    @Select(BasketState.getTotalAmount) totalAmount$!: Observable<number>;
 
+    constructor(private store: Store) {}
+
+    removeProduct(productId: number) {
+        this.store.dispatch(new RemoveProduct(productId));
+    }
+    
+    updateQuantity(productId: number, event: Event) {
+        const inputElement = event.target as HTMLInputElement;
+        const quantity = parseInt(inputElement.value, 10);
+        this.store.dispatch(new UpdateQuantity(productId, quantity));
+      }
 }

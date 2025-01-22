@@ -32,11 +32,8 @@
 /* Agrandissement de l'icône et son alignement avec le texte */
 .cart-icon {
   width: 24px;
-  /* Taille de l'icône */
   height: 24px;
-  /* Taille de l'icône */
   margin-right: 8px;
-  /* Espacement entre l'icône et le texte */
 }
 
 .cart-link:hover {
@@ -55,4 +52,13 @@
   border-radius: 50%;
   display: inline-block;
   line-height: 1;
+}
+
+/* Style pour les boutons de connexion et d'inscription */
+.register-container .btn {
+  margin-right: 10px;
+}
+
+.login-container .btn {
+  margin-left: 10px;
 }

@@ -16,14 +16,14 @@
             </ul>
 
             <div *ngIf="!connected" class="register-container">
-                <a href="register" class="nav-link">S'inscrire</a>
+                <a href="register" class="btn btn-outline-primary me-2">S'inscrire</a>
             </div>
 
             <div *ngIf="!connected" class="login-container">
-                <a href="login" class="nav-link">Se connecter</a>
+                <a href="login" class="btn btn-primary">Se connecter</a>
             </div>
             
-            <div class="cart-container">
+            <div class="cart-container ms-3">
                 <a href="basket" class="nav-link cart-link">
                     <img src="../../assets/basket.png" alt="Panier" class="cart-icon">
                     <span class="cart-count">0</span> <!-- Nombre de produits -->

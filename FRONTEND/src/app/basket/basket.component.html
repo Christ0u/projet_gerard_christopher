@@ -1,1 +1,8 @@
-<p>basket works!</p>
+<!-- <div *ngIf="(products$ | async) as products">
+    <div *ngFor="let product of products">
+        <p>{{ product.name }} - {{ product.price }}€ x {{ product.quantity }}</p>
+        <button (click)="removeProduct(product.id)">Remove</button>
+        <input type="number" [value]="product.quantity" (change)="updateQuantity(product.id, $event)">
+    </div>
+    <p>Total: {{ totalAmount$ | async }}€</p>
+</div> -->

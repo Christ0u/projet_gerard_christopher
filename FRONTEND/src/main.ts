@@ -9,7 +9,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     provideHttpClient()
-    // provideStore([BasketState])
+    //provideStore([BasketState])
   ]
 })
   .catch((err) => console.error(err));

@@ -6,4 +6,5 @@ export interface Products {
     inStock: boolean;
     description: string;
     rating : number;
+    quantity?: number;
 }

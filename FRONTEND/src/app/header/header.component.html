@@ -18,15 +18,15 @@
                 </li>
             </ul>
 
-            <div *ngIf="connected" class="register-container">
+            <div *ngIf="!connected" class="register-container">
                 <a href="register" class="btn btn-outline-primary me-2" routerLink="register">S'inscrire</a>
             </div>
 
-            <div *ngIf="connected" class="login-container">
+            <div *ngIf="!connected" class="login-container">
                 <a href="login" class="btn btn-primary" routerLink="login">Se connecter</a>
             </div>
             
-            <div *ngIf="!connected" class="logout-container">
+            <div *ngIf="connected" class="logout-container">
                 <button class="btn btn-danger" (click)="logout()">Se déconnecter</button>
             </div>
             

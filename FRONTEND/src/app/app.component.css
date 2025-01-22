@@ -1,0 +1,18 @@
+html,
+body {
+    height: 100%;
+    /* Prend toute la hauteur de la fenêtre */
+    margin: 0;
+}
+
+/* #app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Hauteur minimale de la page
+} */
+
+.content {
+    flex: 1;
+    /* Permet au contenu principal d'occuper tout l'espace disponible */
+}

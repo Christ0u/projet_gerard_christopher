@@ -1,0 +1,64 @@
+.navbar {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.nav-link {
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #0056b3;
+}
+
+/* Style pour la section panier */
+.cart-container {
+  position: relative;
+}
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  color: #007bff;
+  text-decoration: none;
+  position: relative;
+}
+
+/* Agrandissement de l'icône et son alignement avec le texte */
+.cart-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.cart-link:hover {
+  color: #0056b3;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Style pour les boutons de connexion et d'inscription */
+.register-container .btn {
+  margin-right: 10px;
+}
+
+.login-container .btn {
+  margin-left: 10px;
+}

@@ -1,0 +1,36 @@
+<body>
+  <div class="container mt-5 mb-5">
+      <div class="card shadow-lg">
+          <div class="card-header bg-primary text-white">
+              <h3 class="mb-0">Connexion</h3>
+          </div>
+          <div class="card-body">
+              <div *ngIf="!hideTable">
+                  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+                  
+                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                      <div class="mb-3">
+                          <label for="login" class="form-label">Nom d'utilisateur</label>
+                          <input id="login" formControlName="login" type="text" class="form-control" />
+                          <div *ngIf="loginForm.get('login')?.invalid && loginForm.get('login')?.touched" class="invalid-feedback">
+                              Nom d'utilisateur requis
+                          </div>
+                      </div>
+                  
+                      <div class="mb-3">
+                          <label for="password" class="form-label">Mot de passe</label>
+                          <input id="password" formControlName="password" type="password" class="form-control" />
+                          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="invalid-feedback">
+                              Mot de passe requis (min 8 caractères)
+                          </div>
+                      </div>
+                  
+                      <div class="d-grid">
+                          <button type="submit" class="btn btn-primary btn-lg" [disabled]="!isFormValid">Se connecter</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</body>

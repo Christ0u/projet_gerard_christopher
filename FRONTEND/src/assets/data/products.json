@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "name": "Laptop Pro",
+        "category": "Electronics",
+        "price": 1200.99,
+        "inStock": true,
+        "description": "A high-performance laptop for professionals.",
+        "rating": 4.7
+    },
+    {
+        "id": 2,
+        "name": "Wireless Headphones",
+        "category": "Audio",
+        "price": 150.50,
+        "inStock": false,
+        "description": "Noise-canceling wireless headphones with premium sound quality.",
+        "rating": 4.5
+    },
+    {
+        "id": 3,
+        "name": "Smartphone Plus",
+        "category": "Electronics",
+        "price": 899.99,
+        "inStock": true,
+        "description": "Latest smartphone with advanced features.",
+        "rating": 4.6
+    },
+    {
+        "id": 4,
+        "name": "4K Monitor",
+        "category": "Electronics",
+        "price": 350.00,
+        "inStock": true,
+        "description": "High-resolution 4K monitor ideal for gaming and graphic design.",
+        "rating": 4.4
+    },
+    {
+        "id": 5,
+        "name": "Running Shoes",
+        "category": "Sportswear",
+        "price": 80.00,
+        "inStock": true,
+        "description": "Lightweight and comfortable running shoes.",
+        "rating": 4.3
+    },
+    {
+        "id": 6,
+        "name": "Smartwatch Series 5",
+        "category": "Wearable Tech",
+        "price": 200.00,
+        "inStock": false,
+        "description": "Stay connected on the go with this smartwatch.",
+        "rating": 4.2
+    },
+    {
+        "id": 7,
+        "name": "Electric Toothbrush",
+        "category": "Personal Care",
+        "price": 60.00,
+        "inStock": true,
+        "description": "Rechargeable toothbrush with multiple cleaning modes.",
+        "rating": 4.1
+    },
+    {
+        "id": 8,
+        "name": "Blender Pro",
+        "category": "Home Appliances",
+        "price": 55.99,
+        "inStock": true,
+        "description": "High-speed blender with durable stainless steel blades.",
+        "rating": 4.0
+    },
+    {
+        "id": 9,
+        "name": "Vacuum Cleaner",
+        "category": "Home Appliances",
+        "price": 180.50,
+        "inStock": false,
+        "description": "Powerful vacuum cleaner with a range of attachments.",
+        "rating": 4.3
+    },
+    {
+        "id": 10,
+        "name": "Coffee Maker",
+        "category": "Kitchen",
+        "price": 45.00,
+        "inStock": true,
+        "description": "Compact coffee maker with easy one-touch operation.",
+        "rating": 4.5
+    },
+    {
+        "id": 11,
+        "name": "Gaming Mouse",
+        "category": "Electronics",
+        "price": 35.99,
+        "inStock": true,
+        "description": "High-precision gaming mouse with customizable buttons.",
+        "rating": 4.4
+    },
+    {
+        "id": 12,
+        "name": "Yoga Mat",
+        "category": "Sportswear",
+        "price": 25.00,
+        "inStock": true,
+        "description": "Non-slip yoga mat for comfort and stability.",
+        "rating": 4.6
+    },
+    {
+        "id": 13,
+        "name": "Desk Lamp",
+        "category": "Home Decor",
+        "price": 20.99,
+        "inStock": true,
+        "description": "LED desk lamp with adjustable brightness settings.",
+        "rating": 4.2
+    },
+    {
+        "id": 14,
+        "name": "Air Purifier",
+        "category": "Home Appliances",
+        "price": 120.00,
+        "inStock": false,
+        "description": "Efficient air purifier for healthier indoor air quality.",
+        "rating": 4.7
+    },
+    {
+        "id": 15,
+        "name": "Digital Camera",
+        "category": "Photography",
+        "price": 499.99,
+        "inStock": true,
+        "description": "High-resolution digital camera for amateur and professional use.",
+        "rating": 4.5
+    },
+    {
+        "id": 16,
+        "name": "Electric Kettle",
+        "category": "Kitchen",
+        "price": 30.00,
+        "inStock": true,
+        "description": "Fast-boiling electric kettle with automatic shut-off.",
+        "rating": 4.4
+    },
+    {
+        "id": 17,
+        "name": "Hiking Backpack",
+        "category": "Sportswear",
+        "price": 65.00,
+        "inStock": true,
+        "description": "Durable backpack with ample storage for outdoor activities.",
+        "rating": 4.6
+    },
+    {
+        "id": 18,
+        "name": "Gaming Keyboard",
+        "category": "Electronics",
+        "price": 70.00,
+        "inStock": false,
+        "description": "Mechanical keyboard with customizable backlight for gaming.",
+        "rating": 4.3
+    },
+    {
+        "id": 19,
+        "name": "E-Reader",
+        "category": "Electronics",
+        "price": 90.00,
+        "inStock": true,
+        "description": "Lightweight e-reader with long battery life for reading on the go.",
+        "rating": 4.7
+    },
+    {
+        "id": 20,
+        "name": "Smart Thermostat",
+        "category": "Home Automation",
+        "price": 150.00,
+        "inStock": true,
+        "description": "Energy-saving smart thermostat with mobile app control.",
+        "rating": 4.5
+    }
+]

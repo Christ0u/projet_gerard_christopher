@@ -27,4 +27,8 @@ export class BasketComponent {
         const quantity = parseInt(inputElement.value, 10);
         this.store.dispatch(new UpdateQuantity(productId, quantity));
     }
+
+    pay(): void {
+        alert('Merci pour votre achat ! Votre commande a été prise en compte.');
+    }
 }

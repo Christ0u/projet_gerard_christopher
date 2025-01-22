@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngxs/store';
-
+import { AddProduct } from '../basket/basket.actions';
 import { Products } from '../models/products.model';
 import { CatalogService } from '../services/catalog.service';
 import { SearchEngineComponent } from '../search-engine/search-engine.component';
@@ -22,7 +22,7 @@ export class ProductsListComponent implements OnInit {
   maxPrice: number = 100;
   minRating: number = 0;
 
-  constructor(private catalogService: CatalogService) {}
+  constructor(private catalogService: CatalogService, private store: Store) {}
     
   ngOnInit(): void {
       this.catalogService.getProducts().subscribe((data: Products[]) => {
@@ -53,5 +53,8 @@ export class ProductsListComponent implements OnInit {
     this.minRating = minRating;
     this.applyFilters();
   }
+
+  addToBasket(product: Products): void {
+    this.store.dispatch(new AddProduct(product));
+  }
 }
-  

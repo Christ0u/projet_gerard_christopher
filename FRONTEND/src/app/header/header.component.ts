@@ -28,6 +28,6 @@ export class HeaderComponent implements OnInit {
     logout() {
         this.userAuthService.logout();
         this.connected = false;
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
     }
 }

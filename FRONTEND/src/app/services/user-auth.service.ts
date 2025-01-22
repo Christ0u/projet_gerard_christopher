@@ -45,4 +45,8 @@ export class UserAuthService {
   isAuthenticated(): Observable<boolean> {
     return this.currentUser.pipe(map(user => !!user));
   }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
 }

@@ -113,16 +113,3 @@ exports.getUser = async (req, res) => {
     res.status(500).send({ message: 'Erreur lors de la récupération des informations utilisateur.' });
   }
 };
-
-exports.updateUser = async (req, res) => {
-  try {
-    const utilisateur = await Utilisateurs.findByPk(req.token.id);
-    if (!utilisateur) {
-      return res.status(404).send({ message: 'Utilisateur non trouvé.' });
-    }
-    await utilisateur.update(req.body);
-    res.status(200).send(utilisateur);
-  } catch (error) {
-    res.status(500).send({ message: 'Erreur lors de la mise à jour des informations utilisateur.' });
-  }
-};

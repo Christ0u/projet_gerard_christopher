@@ -15,7 +15,7 @@ export class UserSummaryComponent implements OnInit {
   userForm: FormGroup;
   currentUser: Users | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userAuthService: UserAuthService) {
     this.userForm = this.fb.group({
       civility: [''],
       firstName: [''],
@@ -39,4 +39,21 @@ export class UserSummaryComponent implements OnInit {
       }
     }
   }
+  
+  // onSubmit() {
+  //   if (this.userForm.valid) {
+  //     this.userAuthService.updateUser(this.userForm.value).subscribe(
+  //       (response: any) => {
+  //         console.log('User updated successfully:', response);
+  //         alert('Informations mises à jour avec succès.');
+  //       },
+  //       (error: any) => {
+  //         console.error('Error updating user:', error);
+  //         alert('Erreur lors de la mise à jour des informations.');
+  //       }
+  //     );
+  //   } else {
+  //     alert("Certains champs sont invalides ou non renseignés.");
+  //   }
+  // }
 }

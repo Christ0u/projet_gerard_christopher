@@ -16,15 +16,15 @@ export class BasketComponent {
     @Select(BasketState.getProducts) products$!: Observable<any[]>;
     @Select(BasketState.getTotalAmount) totalAmount$!: Observable<number>;
 
-    constructor(private store: Store) {}
+    constructor(private store: Store) { }
 
     removeProduct(productId: number) {
         this.store.dispatch(new RemoveProduct(productId));
     }
-    
+
     updateQuantity(productId: number, event: Event) {
         const inputElement = event.target as HTMLInputElement;
         const quantity = parseInt(inputElement.value, 10);
         this.store.dispatch(new UpdateQuantity(productId, quantity));
-      }
+    }
 }

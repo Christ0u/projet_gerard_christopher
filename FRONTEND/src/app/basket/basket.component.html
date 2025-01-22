@@ -1,8 +1,15 @@
-<div *ngIf="(products$ | async) as products">
-    <div *ngFor="let product of products">
-        <p>{{ product.name }} - {{ product.price }}€ x {{ product.quantity }}</p>
-        <button (click)="removeProduct(product.id)">Remove</button>
-        <input type="number" [value]="product.quantity" (change)="updateQuantity(product.id, $event)">
+<div class="basket-container" *ngIf="(products$ | async) as products">
+    <div *ngIf="products.length > 0; else emptyBasket">
+        <div *ngFor="let product of products" class="basket-item">
+            <p>{{ product.name }} - {{ product.price }}€ x {{ product.quantity }}</p>
+            <div>
+                <input type="number" class="form-control d-inline-block w-auto" [value]="product.quantity" (change)="updateQuantity(product.id, $event)" min="0">
+                <button class="btn btn-danger" (click)="removeProduct(product.id)">Remove</button>
+            </div>
+        </div>
+        <p class="basket-total">Total: {{ (totalAmount$ | async)?.toFixed(2) }}€</p>
     </div>
-    <p>Total: {{ totalAmount$ | async }}€</p>
+    <ng-template #emptyBasket>
+        <p class="empty-basket-message">Votre panier est vide.</p>
+    </ng-template>
 </div>
